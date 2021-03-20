@@ -48,9 +48,9 @@ export function Header() {
             toggleMainMenu();
           }}
         />
-        <div className="auth-container">
-          <Login />
-        </div>
+        {/*<div className="auth-container">*/}
+        {/*  <Login />*/}
+        {/*</div>*/}
       </div>
     </header>
   );

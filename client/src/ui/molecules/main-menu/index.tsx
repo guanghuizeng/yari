@@ -166,40 +166,6 @@ export default function MainMenu({
         },
       ],
     },
-    {
-      label: "Feedback",
-      labelId: "feedback",
-      items: [
-        {
-          url: `/${locale}/docs/MDN/Contribute/Feedback`,
-          label: "Send Feedback",
-        },
-        {
-          url: `/${locale}/docs/MDN/Contribute`,
-          label: "Contribute to MDN",
-        },
-        {
-          label: "Report a content issue",
-          external: true,
-          url: "https://github.com/mdn/content/issues/new",
-          onClick: (event) => {
-            const onGithubElement = document.querySelector("#on-github");
-            if (onGithubElement) {
-              event.preventDefault();
-              if (toggleMainMenu) {
-                toggleMainMenu();
-              }
-              onGithubElement.scrollIntoView({ behavior: "smooth" });
-            }
-          },
-        },
-        {
-          label: "Report a platform issue",
-          external: true,
-          url: "https://github.com/mdn/yari/issues/new",
-        },
-      ],
-    },
   ];
 
   return (
@@ -229,35 +195,16 @@ export default function MainMenu({
             >
               {menuEntry.items.map((item) => (
                 <li key={item.url} role="none">
-                  {item.external ? (
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={item.url}
-                      onClick={(event) => {
-                        item.onClick
-                          ? item.onClick(event)
-                          : sendMenuItemInteraction(event);
-                      }}
-                      onContextMenu={sendMenuItemInteraction}
-                      role="menuitem"
-                    >
-                      {item.label} &#x1f310;
-                    </a>
-                  ) : (
-                    <a
-                      href={item.url}
-                      onClick={(event) => {
-                        item.onClick
-                          ? item.onClick(event)
-                          : sendMenuItemInteraction(event);
-                      }}
-                      onContextMenu={sendMenuItemInteraction}
-                      role="menuitem"
-                    >
-                      {item.label}
-                    </a>
-                  )}
+                  <a
+                    href={item.url}
+                    onClick={(event) => {
+                      sendMenuItemInteraction(event);
+                    }}
+                    onContextMenu={sendMenuItemInteraction}
+                    role="menuitem"
+                  >
+                    {item.label}
+                  </a>
                 </li>
               ))}
             </ul>
