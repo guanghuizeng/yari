@@ -33,7 +33,7 @@ export default function Toolbar({
   }, [doc]);
 
   return (
-    <div className="toolbar">
+    <div className="toolbar" style={{ display: "none" }}>
       <div className="toolbar-first-row">
         <EditActions folder={doc.source.folder} />
       </div>
